@@ -81,7 +81,7 @@ export default function () {
   const { state } = useContext(Context);
 
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer ref={navigationRef} style={styles.container}>
       <Tab.Navigator
         screenOptions={{
           headerShown: false
@@ -118,6 +118,7 @@ export default function () {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    display: 'flex',
+    flwex: 1
   }
 });

@@ -1,18 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import Slides from '../components/Slides';
 
 const SLIDE_DATA = [
-  { text: 'Welcome to Job App', color: 'green' },
+  { text: 'Welcome to Job App' },
   { text: 'Set your location', color: 'purple' },
   { text: 'then swipe away', color: 'turquoise' }
 ];
 
-const WelcomeScreen = () => {
-  return <Slides data={SLIDE_DATA} />;
+const WelcomeScreen = ({ navigation }) => {
+  const redirect = () => {
+    console.log('redirect');
+    navigation.navigate('AuthScreen');
+  };
+
+  return (
+    <View style={styles.container}>
+      <Slides data={SLIDE_DATA} onComplete={redirect} />
+    </View>
+  );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    flex: 1
+  }
+});
 
 export default WelcomeScreen;
