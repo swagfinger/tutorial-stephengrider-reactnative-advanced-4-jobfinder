@@ -28,6 +28,13 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f2d54cbc-ee05-43f4-8036-ebc584d37c4e"
+      }
+    },
+    "owner": "swagfinger"
+ 
   }
 }

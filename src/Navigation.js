@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import { Button } from '@rneui/themed';
@@ -15,12 +15,9 @@ import WelcomeScreen from './screens/WelcomeScreen';
 import ReviewScreen from './screens/ReviewScreen';
 import SettingsScreen from './screens/SettingsScreen';
 
-//need access to state to see if there is token
-import { Context } from './context/AuthContext';
-
 import { FontAwesome } from '@expo/vector-icons';
 
-const ReviewFlow = createNativeStackNavigator();
+const reviewflow = createNativeStackNavigator();
 function ReviewFlowScreen() {
   return (
     <ReviewFlow.Navigator screenOptions={{ headerShown: true }}>
@@ -43,12 +40,12 @@ function ReviewFlowScreen() {
   );
 }
 
-const MainFlow = createBottomTabNavigator();
+const mainflow = createBottomTabNavigator();
 function MainFlowScreen() {
   return (
     <MainFlow.Navigator screenOptions={{ headerShown: false }}>
       <MainFlow.Screen
-        name="MapScreen"
+        name="mapscreen"
         component={MapScreen}
         options={{
           tabBarLabel: 'Map',
@@ -56,7 +53,7 @@ function MainFlowScreen() {
         }}
       />
       <MainFlow.Screen
-        name="DeckScreen"
+        name="deckscreen"
         component={DeckScreen}
         options={{
           tabBarLabel: 'Deck',
@@ -64,7 +61,7 @@ function MainFlowScreen() {
         }}
       />
       <MainFlow.Screen
-        name="ReviewFlow"
+        name="reviewflow"
         component={ReviewFlowScreen}
         options={{
           tabBarLabel: 'Review',
@@ -78,17 +75,17 @@ function MainFlowScreen() {
 const Tab = createBottomTabNavigator();
 
 export default function () {
-  const { state } = useContext(Context);
-
   return (
     <NavigationContainer ref={navigationRef} style={styles.container}>
       <Tab.Navigator
         screenOptions={{
-          headerShown: false
+          headerShown: false,
+          lazy: true,
+          tabBarStyle: { display: 'none' }
         }}
       >
         <Tab.Screen
-          name="WelcomeScreen"
+          name="welcomescreen"
           component={WelcomeScreen}
           options={{
             tabBarLabel: 'Welcome',
@@ -96,7 +93,7 @@ export default function () {
           }}
         />
         <Tab.Screen
-          name="AuthScreen"
+          name="authscreen"
           component={AuthScreen}
           options={{
             tabBarLabel: 'Auth',
@@ -104,7 +101,7 @@ export default function () {
           }}
         />
         <Tab.Screen
-          name="MainFlow"
+          name="mainflow"
           component={MainFlowScreen}
           options={{
             tabBarLabel: 'Main',

@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "reactnative-advanced-4-jobfind",
+    "slug": "reactnative-advanced-4-jobfind",
+    "scheme": "codingspark",
+    "extra": {
+      "eas": {
+        "projectId": "c4406337-aaff-4403-999a-22fabc3f8cd1"
+      }
+    },
+    "owner": "swagfinger"
+  }
+}
