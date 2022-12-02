@@ -17,35 +17,35 @@ import SettingsScreen from './screens/SettingsScreen';
 
 import { FontAwesome } from '@expo/vector-icons';
 
-const reviewflow = createNativeStackNavigator();
+const ReviewFlow = createNativeStackNavigator();
 function ReviewFlowScreen() {
   return (
     <ReviewFlow.Navigator screenOptions={{ headerShown: true }}>
       <ReviewFlow.Screen
-        name="Review"
+        name="ReviewScreen"
         component={ReviewScreen}
         options={({ navigation, route }) => {
           return {
             headerRight: () => (
               <Button
-                onPress={() => navigation.navigate('Settings')}
+                onPress={() => navigation.navigate('SettingsScreen')}
                 title="Settings"
               />
             )
           };
         }}
       />
-      <ReviewFlow.Screen name="Settings" component={SettingsScreen} />
+      <ReviewFlow.Screen name="SettingsScreen" component={SettingsScreen} />
     </ReviewFlow.Navigator>
   );
 }
 
-const mainflow = createBottomTabNavigator();
+const MainFlow = createBottomTabNavigator();
 function MainFlowScreen() {
   return (
     <MainFlow.Navigator screenOptions={{ headerShown: false }}>
       <MainFlow.Screen
-        name="mapscreen"
+        name="MapScreen"
         component={MapScreen}
         options={{
           tabBarLabel: 'Map',
@@ -53,7 +53,7 @@ function MainFlowScreen() {
         }}
       />
       <MainFlow.Screen
-        name="deckscreen"
+        name="DeckScreen"
         component={DeckScreen}
         options={{
           tabBarLabel: 'Deck',
@@ -61,7 +61,7 @@ function MainFlowScreen() {
         }}
       />
       <MainFlow.Screen
-        name="reviewflow"
+        name="ReviewFlowScreen"
         component={ReviewFlowScreen}
         options={{
           tabBarLabel: 'Review',
@@ -85,7 +85,7 @@ export default function () {
         }}
       >
         <Tab.Screen
-          name="welcomescreen"
+          name="WelcomeScreen"
           component={WelcomeScreen}
           options={{
             tabBarLabel: 'Welcome',
@@ -93,7 +93,7 @@ export default function () {
           }}
         />
         <Tab.Screen
-          name="authscreen"
+          name="AuthScreen"
           component={AuthScreen}
           options={{
             tabBarLabel: 'Auth',
@@ -101,7 +101,7 @@ export default function () {
           }}
         />
         <Tab.Screen
-          name="mainflow"
+          name="MainFlowScreen"
           component={MainFlowScreen}
           options={{
             tabBarLabel: 'Main',

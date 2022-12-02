@@ -12,7 +12,7 @@ const SLIDE_DATA = [
 const WelcomeScreen = ({ navigation }) => {
   const redirect = () => {
     console.log('redirect');
-    navigation.navigate('authscreen');
+    navigation.navigate('AuthScreen');
   };
 
   return (

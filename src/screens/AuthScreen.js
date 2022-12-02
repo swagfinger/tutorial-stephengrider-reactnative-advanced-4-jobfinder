@@ -10,11 +10,6 @@ import * as actions from '../actions';
 WebBrowser.maybeCompleteAuthSession();
 
 const AuthScreen = (props) => {
-  // google login
-  useEffect(() => {
-    props.googleTokenLogin();
-  }, []);
-
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId:
       '137479108168-kipjemhi7e840v9jq70of3bebl2jnghi.apps.googleusercontent.com',
@@ -24,18 +19,39 @@ const AuthScreen = (props) => {
       '137479108168-kipjemhi7e840v9jq70of3bebl2jnghi.apps.googleusercontent.com'
   });
 
+  // try google token login
   useEffect(() => {
-    if (request) {
-      console.log('request');
+    props.googleTokenLogin();
+  }, []);
+
+  //redirect if no token
+  useEffect(() => {
+    if (request && !props.token) {
+      console.log('before promtAsync(): ', props.token);
       promptAsync();
     }
   }, [request]);
 
+  //handle response
   useEffect(() => {
-    props.handleResponse(response);
+    if (response) {
+      props.handleResponse(response);
+    }
   }, [response]);
 
+  //redirect user after successful login
+  useEffect(() => {
+    if (props.token) {
+      props.navigation.navigate('MainFlowScreen', { screen: 'MapScreen' });
+    }
+  }, [props.token]);
   return <View />;
 };
 
-export default connect(null, actions)(AuthScreen);
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.token
+  };
+};
+
+export default connect(mapStateToProps, actions)(AuthScreen);
