@@ -19,8 +19,8 @@ const AuthScreen = (props) => {
       '137479108168-kipjemhi7e840v9jq70of3bebl2jnghi.apps.googleusercontent.com'
   });
 
-  // try google token login
   useEffect(() => {
+    console.log('AuthScreen');
     props.googleTokenLogin();
   }, []);
 
@@ -41,7 +41,10 @@ const AuthScreen = (props) => {
 
   //redirect user after successful login
   useEffect(() => {
-    if (props.token) {
+    if (!props.token) {
+      // try google token login
+      props.googleTokenLogin();
+    } else {
       props.navigation.navigate('MainFlowScreen', { screen: 'MapScreen' });
     }
   }, [props.token]);
