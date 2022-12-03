@@ -39,6 +39,13 @@ https://docs.expo.dev/guides/authentication/#facebook
 
 - valid oauth redirect url
 
+## MapView / Expo-Location
+
+```console
+npx expo install react-native-maps
+npx expo install expo-location
+```
+
 ## Troubleshoot
 
 LATEST: https://docs.expo.dev/guides/authentication/
