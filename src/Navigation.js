@@ -15,7 +15,7 @@ import WelcomeScreen from './screens/WelcomeScreen';
 import ReviewScreen from './screens/ReviewScreen';
 import SettingsScreen from './screens/SettingsScreen';
 
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 
 const ReviewFlow = createNativeStackNavigator();
 function ReviewFlowScreen() {
@@ -49,23 +49,27 @@ function MainFlowScreen() {
         component={MapScreen}
         options={{
           tabBarLabel: 'Map',
-          tabBarIcon: () => <FontAwesome name="th-list" size={20} />
+          tabBarIcon: ({ tintColor }) => (
+            <FontAwesome name="map-marker" size={20} color={tintColor} />
+          )
         }}
       />
       <MainFlow.Screen
         name="DeckScreen"
         component={DeckScreen}
         options={{
-          tabBarLabel: 'Deck',
-          tabBarIcon: () => <FontAwesome name="th-list" size={20} />
+          tabBarLabel: 'Jobs',
+          tabBarIcon: ({ tintColor }) => (
+            <MaterialIcons name="description" size={20} />
+          )
         }}
       />
       <MainFlow.Screen
         name="ReviewFlowScreen"
         component={ReviewFlowScreen}
         options={{
-          tabBarLabel: 'Review',
-          tabBarIcon: () => <FontAwesome name="th-list" size={20} />
+          tabBarLabel: 'Favorite',
+          tabBarIcon: () => <MaterialIcons name="favorite" size={20} />
         }}
       />
     </MainFlow.Navigator>

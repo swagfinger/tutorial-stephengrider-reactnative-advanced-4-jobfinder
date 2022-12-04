@@ -1,8 +1,6 @@
 import qs from 'qs';
-import * as Location from 'expo-location';
-import * as Permissions from 'expo-permissions';
 
-import { FETCH_JOBS } from './types';
+import { CLEAR_LIKED_JOBS, FETCH_JOBS, LIKE_JOB } from './types';
 import JOB_DATA from './IndeedJobData.json';
 const JOB_ROUTE_URL = 'http://api.indeed.com/ads/apisearch?';
 const JOB_QUERY_PARAMS = {
@@ -28,7 +26,7 @@ export const fetchJobs =
       //const url = buildJobsUrl(zip);
       //let { data } = await axios.get(url);
 
-      const data = JOB_DATA;
+      const data = JOB_DATA.results.slice();
       //console.log(data);
       dispatch({ type: FETCH_JOBS, payload: data });
       if (callback) {
@@ -38,3 +36,14 @@ export const fetchJobs =
       console.error(e);
     }
   };
+
+export const likeJob = (job) => (dispatch) => {
+  dispatch({
+    type: LIKE_JOB,
+    payload: job
+  });
+};
+
+export const clearLikedJobs = () => (dispatch) => {
+  dispatch({ type: CLEAR_LIKED_JOBS });
+};

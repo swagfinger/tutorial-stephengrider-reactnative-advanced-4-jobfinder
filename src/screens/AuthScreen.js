@@ -19,11 +19,6 @@ const AuthScreen = (props) => {
       '137479108168-kipjemhi7e840v9jq70of3bebl2jnghi.apps.googleusercontent.com'
   });
 
-  useEffect(() => {
-    console.log('AuthScreen');
-    props.googleTokenLogin();
-  }, []);
-
   //redirect if no token
   useEffect(() => {
     if (request && !props.token) {

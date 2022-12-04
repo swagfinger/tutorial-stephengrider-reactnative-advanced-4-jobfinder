@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { Button } from '@rneui/themed';
 import * as Location from 'expo-location';
-
 import * as actions from '../actions';
 import MapView from 'react-native-maps';
 
@@ -20,13 +19,13 @@ const MapScreen = (props) => {
   useEffect(() => {
     (async () => {
       try {
-        let { status } = await Location.requestForegroundPermissionsAsync();
-        if (status !== 'granted') {
-          setErrorMsg('Permission to access location was denied');
-          return;
-        }
+        // let { status } = await Location.requestForegroundPermissionsAsync();
+        // if (status !== 'granted') {
+        //   setErrorMsg('Permission to access location was denied');
+        //   return;
+        // }
       } catch (err) {
-        console.log({ err });
+        // console.log({ err });
       }
     })();
 
@@ -43,6 +42,7 @@ const MapScreen = (props) => {
     //function is from action creator src/actions/job_action
     props.fetchJobs(region, () => {
       console.log('DATA LOADED!');
+      props.navigation.navigate('MainFlowScreen', { screen: 'DeckScreen' });
     });
   };
 
@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
   buttonContainer: {
     position: 'absolute',
     bottom: 20,
-    left: 0,
-    right: 0
+    left: 10,
+    right: 10
   },
   map: {
     height: 300
