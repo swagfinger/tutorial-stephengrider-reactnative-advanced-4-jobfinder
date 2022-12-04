@@ -75,3 +75,32 @@ expo install expo-facebook
 4. Using android studio - https://docs.expo.dev/workflow/android-studio-emulator/
 
 - running expo in an emulator
+
+## Expo Notifications
+
+- testing notifications
+
+```console
+https://expo.dev/notifications
+```
+
+https://expo.dev/notifications
+
+https://www.udemy.com/course/react-native-advanced/learn/lecture/6853776#questions/17724982
+
+- You will need to have an expo developer account and login on your terminal for this to work. As well as run the app on a real device.
+- To login use the command below on the terminal then enter username + password.
+
+```console
+expo login
+```
+
+- To then send push notifications to your app you would copy the token from your terminal/console that will look something like
+
+-1.save token - ExponentPushToken[******************************] saved to backend
+
+- And you can enter this token plus a message on this expo website to send a notification to your device
+
+2. send message from backend
+
+3. handle message
